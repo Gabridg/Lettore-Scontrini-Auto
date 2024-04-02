@@ -1,0 +1,97 @@
+/* General Settings */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inconsolata", monospace;
+}
+/* Header */
+header{
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    color: #000;
+    background: rgb(25,237,0);
+    background: linear-gradient(130deg, rgba(25,237,0,1) 0%, rgba(255,255,255,1) 50%, rgba(255,0,0,1) 100%);
+}
+header h1{
+    font-weight: 900;
+}
+#logo{
+    height: 100px;
+}
+
+/* Main */
+main{
+    margin-top: 110px;
+}
+#step-one{
+    font-weight: bolder;
+    position: absolute;
+    top: 140px;
+    left: 270px;
+}
+#step-two{
+    font-weight: bolder;
+    position: absolute;
+    top: 370px;
+    left: 270px;
+}
+#step-three{
+    font-weight: bolder;
+    position: absolute;
+    top: 600px;
+    left: 270px;
+}
+.primary-button{
+    border-color: #000;
+    background: rgb(25,237,0);
+    background: linear-gradient(130deg, rgba(25,237,0,1) 0%, rgba(255,255,255,1) 50%, rgba(255,0,0,1) 100%);
+    font-weight: bold;
+    padding: 10px;
+}
+/* Starter */
+#starter{
+    margin: 30px auto;
+    text-align: center;
+    background-color: #19ed00;
+    border-radius: 30px;
+    max-width: 50%;
+    height: 200px;
+    color: #fff;
+    line-height: 60px;
+    padding: 10px;
+    box-shadow: #000 3px 5px 5px;
+}
+/* Input selection */
+#input-selection{
+    margin: 30px auto;
+    text-align: center;
+    background-color: #eee;
+    box-shadow: #000 3px 5px 5px;
+    border-radius: 30px;
+    max-width: 50%;
+    height: 200px;
+    color: #000;
+    line-height: 100px;
+}
+
+/* Start program */
+#startProgram{
+    margin: 30px auto;
+    text-align: center;
+    background-color: #ff0000;
+    border-radius: 30px;
+    max-width: 50%;
+    height: 200px;
+    color: #fff;
+    line-height: 200px;
+    box-shadow: #000 3px 5px 5px;
+}

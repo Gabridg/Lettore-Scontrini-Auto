@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+    
+    <!-- My style & script -->
+    <script src="script/script.js"></script>
+    <link rel="stylesheet" href="style/style.css">
+
+    <link rel="icon" href="img/EBAFoS-no-bg.png">
+    <title>Lettore e analizzatore scontrini</title>
+</head>
+<body>
+    <header>
+        <div>
+            <img src="img/EBAFoS-no-bg.png" alt="Logo EBAFoS" id="logo">
+        </div>
+        <h1>
+            Lettore ed Analizzatore di scontrini automatico per il team EBAFoS
+        </h1>
+    </header>
+
+    <main>
+        <div id="step-one"><span>1° STEP</span></div>
+        <section id="starter">
+            <p>Scrivi all'interno dell'apposito spazio il mese corrente e successivamente premi il pulsante di fianco  per inizializzare il programma.</p>
+            <div style="text-align:center;margin-top:10px;">
+                <form action="process.php" method="POST">
+                    <input type="text" name="month" placeholder="Mese corrente">
+                    <button class="primary-button" type="submit" name="action" value="starter">INIZIALIZZA PROGRAMMA</button>
+                </form>
+            </div>
+        </section>
+        <div id="step-two">2° STEP</div>
+        <section id="input-selection">
+            <form action="process.php" method="POST" enctype="multipart/form-data">
+                <div>
+                    <input type="file" name="scontrini[]" multiple accept=".png,.jpg,.webp,.jpeg">
+                </div>
+                <button class="primary-button" type="submit" name="action" value="moveImageToCorrectPath">INVIA LE IMMAGINI AL SERVER PER L'ELABORAZIONE</button>
+            </form>
+        </section>
+        <div id="step-three">3° STEP</div>
+        <section id="startProgram">
+            <form action="process.php" method="POST">
+                <button class="primary-button" type="submit" name="action" value="startProgram">AVVIA IL PROGRAMMA</button>
+            </form>
+        </section>
+        <section id="result">
+            <div id="totale"></div>
+            <div id="n-scontrini"></div>
+        </section>
+    </main>
+
+
+
+
+    <script>
+        // Funzione per ottenere i parametri dall'URL
+        function getUrlParameter(name) {
+            name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        };
+
+        // Mostra l'alert solo se è presente il parametro nell'URL
+        var starterAlert = getUrlParameter('starterAlert');
+        var moveImageAlert = getUrlParameter('moveImageAlert');
+        var finishedProgramAlert = getUrlParameter('finishedProgramAlert');
+        if (starterAlert === 'true') {
+            alert("Programma inizializzato, Passare al 2° STEP");
+            window.addEventListener('load', function () {
+                window.location.href = "index.html";
+            });
+        }else if (moveImageAlert === 'true') {
+            alert("immagine spostate con successo, passare al 3° STEP");
+            window.addEventListener('load', function () {
+                window.location.href = "index.html";
+            });
+        }else if (finishedProgramAlert === 'true'){
+            alert("Scontrini analizzati e suddivisi correttamente, controllare nella cartella storage/, troverai due cartelle, il mese corrente e le eccedenze del mese corrente");
+            window.addEventListener('load', function () {
+                window.location.href = "index.html";
+            });
+        }
+    </script>
+</body>
+</html>
